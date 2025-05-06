@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import CurrencySelector from "./CurrencySelector";
 import { Button } from "@mui/material";
 import type { AmortizationRow } from "../types";
-import { useAmortizationSchedule } from "../hooks/ScheduleHook";
+import { useAmortizationSchedule } from "../hooks/useAmortizationSchedule";
 
 interface ITable {
   loanAmount: number;

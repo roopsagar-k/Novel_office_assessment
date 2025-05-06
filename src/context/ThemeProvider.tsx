@@ -2,7 +2,7 @@ import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
 } from "@mui/material/styles";
-import { createContext, useContext, useMemo, useState, useEffect } from "react";
+import { createContext, useMemo, useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 type Theme = "dark" | "light";
@@ -12,7 +12,7 @@ type ThemeContextType = {
   toggleTheme: () => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function ThemeProvder({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = useState<Theme>(() => {
@@ -52,10 +52,3 @@ export function ThemeProvder({ children }: { children: React.ReactNode }) {
   );
 }
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within the ThemeProvder");
-  }
-  return context;
-};

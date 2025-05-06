@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import { Refresh, Info, CurrencyExchange } from "@mui/icons-material";
 import { currencies } from "../utils/data";
-import useCurrencyConverter from "../hooks/CurrencyConverter";
+import useCurrencyConverter from "../hooks/useCurrencyConverter";
 
 interface ExchangeRatePageProps {
   emiAmount?: number;
