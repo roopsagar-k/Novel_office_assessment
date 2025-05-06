@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import AmortizationTable from "../components/Table";
 
 const IndexPage = () => {
@@ -11,19 +11,32 @@ const IndexPage = () => {
   const [calculatedLoan, setCalculatedLoan] = useState(loanAmount);
   const [calculatedInterest, setCalculatedInterest] = useState(interestRate);
   const [calculatedTerm, setCalculatedTerm] = useState(term);
+  const [resetTrigger, setResetTrigger] = useState(0);
 
   const handleCalculate = () => {
     setCalculatedLoan(loanAmount);
     setCalculatedInterest(interestRate);
     setCalculatedTerm(term);
+    setResetTrigger((prev) => prev + 1);
   };
 
   return (
     <div>
-      <Navbar />
       <div className="max-w-7xl mx-auto px-4 py-10">
         <div>
-          <h2 className="text-3xl font-bold mb-4">Calculate Your Loan</h2>
+          <Typography
+            sx={{
+              fontSize: {
+                xs: "1.5rem",
+                sm: "2rem",
+                md: "2.5rem",
+              },
+              fontWeight: 500,
+              marginBottom: "10px",
+            }}
+          >
+            Calculate Your Loan
+          </Typography>
           <div className="flex flex-wrap gap-4">
             <TextField
               required
@@ -64,6 +77,7 @@ const IndexPage = () => {
             loanAmount={calculatedLoan}
             intrest={calculatedInterest}
             term={calculatedTerm}
+            resetTrigger={resetTrigger}
           />
         </div>
       </div>

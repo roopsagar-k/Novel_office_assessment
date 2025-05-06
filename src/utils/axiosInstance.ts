@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://your-api.com/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -13,9 +12,9 @@ axiosInstance.interceptors.response.use(
     console.error("API Error:", error);
 
     // Redirecting to internal error page for any error
-    if (typeof window !== "undefined") {
-      window.location.href = "/500";
-    }
+    // if (typeof window !== "undefined") {
+    //   window.location.href = "/error";
+    // }
 
     return Promise.reject(error);
   }

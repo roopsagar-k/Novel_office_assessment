@@ -9,60 +9,23 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import CurrencySelector from "./CurrencySelector";
 import { Button } from "@mui/material";
+import type { AmortizationRow } from "../types";
+import { useAmortizationSchedule } from "../hooks/ScheduleHook";
 
 interface ITable {
   loanAmount: number;
   intrest: number;
   term: number;
-}
-
-interface AmortizationRow {
-  month: number;
-  principal: number;
-  intrest: number;
-  reminingBalance: number;
-}
-
-function calculateEMI(P: number, annualRate: number, T: number) {
-  const R = annualRate / 12 / 100;
-  const N = T * 12;
-  const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
-  return emi;
-}
-
-function generateSchedule(
-  P: number,
-  annualRate: number,
-  T: number
-): AmortizationRow[] {
-  const R = annualRate / 12 / 100;
-  const N = T * 12;
-  const emi = calculateEMI(P, annualRate, T);
-  let balance = P;
-
-  const schedule: AmortizationRow[] = [];
-
-  for (let month = 1; month <= N; month++) {
-    const interestForMonth = balance * R;
-    const principalForMonth = emi - interestForMonth;
-    balance -= principalForMonth;
-
-    schedule.push({
-      month,
-      principal: parseFloat(principalForMonth.toFixed(2)),
-      intrest: parseFloat(interestForMonth.toFixed(2)),
-      reminingBalance: parseFloat(Math.max(balance, 0).toFixed(2)),
-    });
-  }
-
-  return schedule;
+  resetTrigger: number;
 }
 
 export default function AmortizationTable({
   loanAmount,
   intrest,
   term,
+  resetTrigger
 }: ITable) {
+  const { calculateEMI, generateSchedule } = useAmortizationSchedule();
   const [currency, setCurrency] = useState<string>("USD");
   const [emi, setEmi] = useState(calculateEMI(loanAmount, intrest, term));
   const [rows, setRows] = useState<AmortizationRow[]>([]);
@@ -71,7 +34,7 @@ export default function AmortizationTable({
     setEmi(calculateEMI(loanAmount, intrest, term));
     const schedule = generateSchedule(loanAmount, intrest, term);
     setRows(schedule);
-  }, [loanAmount, intrest, term]);
+  }, [loanAmount, intrest, term, resetTrigger]);
 
   return (
     <div>

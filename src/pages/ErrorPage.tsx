@@ -97,7 +97,7 @@ const ErrorPage: React.FC = () => {
               variant="outlined"
               color="primary"
               fullWidth
-              onClick={() => window.location.reload()}
+              onClick={() => window.history.back()}
             >
               Try Again
             </Button>
