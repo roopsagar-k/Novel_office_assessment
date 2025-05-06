@@ -1,54 +1,81 @@
-# React + TypeScript + Vite
+# 💼 React JS Developer Assessment - Novel Office
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a technical assessment for the React JS Developer position at **Novel Office**. It showcases core React concepts, TypeScript usage, responsive design, and external API integration through a live currency conversion and EMI calculation app.
 
-Currently, two official plugins are available:
+🔗 **Live Demo**: [https://novel-office-assessment.vercel.app](https://novel-office-assessment.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** with **TypeScript**
+- **Material UI (MUI)** for modern UI components
+- **Axios** for HTTP requests
+- **ExchangeRate API** for live currency conversion
+- **React Context & Custom Hooks** for clean, modular state management
+- **Responsive Design** across devices
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+/
+├── Home (EMI Calculator with Amortization Schedule)
+├── /exchange-rates-live (Live Currency Conversion for EMI)
+├── /error (Generic Error Page)
+├── /404 (Custom 404 Page for unknown routes)
+├── contexts/ThemeContext.tsx (Global theme toggle support)
+├── hooks/
+│ ├── useTheme.ts
+│ ├── useAmortizationSchedule.ts
+│ └── useCurrencyConverter.ts
+└── utils/
+├── data.ts (Currency data)
+└── axiosInstance.ts (Configured Axios client)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+
+---
+
+## ✨ Features
+
+### 🔢 EMI Calculator with Amortization Schedule
+- Accepts loan amount, interest rate, and tenure
+- Calculates EMI using standard formula
+- Generates a detailed monthly breakdown with interest, principal, and remaining balance
+
+### 💱 Live Currency Converter
+- Converts EMI to user-selected target currency in real-time
+- Pulls latest exchange rates from [ExchangeRate API](https://www.exchangerate-api.com/)
+- Displays conversion results with symbols and last updated timestamp
+
+### ⚙️ Error Handling
+- Dedicated `/error` route to show fallback UI for unexpected app errors
+- Handles API failures gracefully in UI with user-friendly messages
+
+### 🔄 Custom Hooks
+- `useAmortizationSchedule`: Calculates EMI and builds repayment schedule
+- `useCurrencyConverter`: Fetches exchange rates and converts amounts
+- `useTheme`: Manages light/dark theme state
+
+### 📱 Responsive Layout
+- Fully responsive across desktop, tablet, and mobile devices using MUI Grid and breakpoints
+
+---
+
+## 🧪 Running Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/novel-office-assessment.git
+cd novel-office-assessment
+
+# Install dependencies
+npm install
+
+# Set environment variable
+touch .env
+# Add the following line:
+VITE_EXCHANGE_RATE_API_KEY=your_api_key_here
+
+# Start the dev server
+npm run dev
