@@ -1,5 +1,4 @@
-import type React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Box,
   Typography,
@@ -16,7 +15,6 @@ import {
   CardContent,
   IconButton,
   Tooltip,
-  type SelectChangeEvent,
 } from "@mui/material";
 import { Refresh, Info, CurrencyExchange } from "@mui/icons-material";
 import { currencies } from "../utils/data";
@@ -33,7 +31,6 @@ export default function ExchangeRatePage({
   const [targetCurrency, setTargetCurrency] = useState("USD");
   const {
     amount,
-    setAmount,
     handleAmountChange,
     convertedAmount,
     loading,

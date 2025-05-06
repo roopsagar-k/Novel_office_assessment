@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar";
+import { useState } from "react";
 import { TextField, Button, Typography } from "@mui/material";
 import AmortizationTable from "../components/Table";
 

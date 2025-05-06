@@ -14,7 +14,6 @@ import { motion } from "framer-motion";
 const MotionBox = motion(Box);
 
 const ErrorPage: React.FC = () => {
-  const theme = useTheme();
 
   return (
     <Container

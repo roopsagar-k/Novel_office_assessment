@@ -5,7 +5,6 @@ import {
   Button,
   Container,
   Paper,
-  useTheme,
 } from "@mui/material";
 import ErrorIcon from "@mui/icons-material/Error";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";

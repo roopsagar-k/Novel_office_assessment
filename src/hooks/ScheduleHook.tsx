@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import type { AmortizationRow } from "../types";
 
 export function useAmortizationSchedule() {
