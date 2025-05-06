@@ -19,19 +19,7 @@ This project is a technical assessment for the React JS Developer position at **
 
 ## 📁 Project Structure
 
-/
-├── Home (EMI Calculator with Amortization Schedule)
-├── /exchange-rates-live (Live Currency Conversion for EMI)
-├── /error (Generic Error Page)
-├── /404 (Custom 404 Page for unknown routes)
-├── contexts/ThemeContext.tsx (Global theme toggle support)
-├── hooks/
-│ ├── useTheme.ts
-│ ├── useAmortizationSchedule.ts
-│ └── useCurrencyConverter.ts
-└── utils/
-├── data.ts (Currency data)
-└── axiosInstance.ts (Configured Axios client)
+<pre lang="text"> <code> ```text / ├── Home (EMI Calculator with Amortization Schedule) ├── /exchange-rates-live (Live Currency Conversion for EMI) ├── /error (Generic Error Page) ├── /404 (Custom 404 Page for unknown routes) ├── contexts/ThemeContext.tsx (Global theme toggle support) ├── hooks/ │ ├── useTheme.ts │ ├── useAmortizationSchedule.ts │ └── useCurrencyConverter.ts └── utils/ ├── data.ts (Currency data) └── axiosInstance.ts (Configured Axios client) ``` </code> </pre>
 
 
 ---
